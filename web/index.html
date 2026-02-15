@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMTG Working App</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#3a7afe" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="screen active" id="onboarding-screen">
+      <div class="onboarding-step active" data-step="1">
+        <p class="caption">Welcome to Time Guard AI</p>
+        <h2>Average person loses <span class="gradient-text">2.5 hours</span> daily to passive scrolling.</h2>
+        <button class="btn btn-primary" id="onboarding-next">I want to regain my time</button>
+      </div>
+      <div class="onboarding-step" data-step="2">
+        <h2>We detect patterns, not your content.</h2>
+        <p class="caption">🔒 Everything stays on your device by default.</p>
+      </div>
+      <div class="onboarding-step" data-step="3">
+        <h2>Choose your first focus plan</h2>
+        <div class="goal-grid">
+          <button class="goal-card selected" data-goal="30">Reduce 30 min/day</button>
+          <button class="goal-card" data-goal="60">Study Mode</button>
+          <button class="goal-card" data-goal="90">Work Mode</button>
+          <button class="goal-card" data-goal="120">Custom</button>
+        </div>
+      </div>
+      <div class="onboarding-step" data-step="4">
+        <h2>Grant usage access when prompted.</h2>
+        <p class="caption">We use usage metadata to detect endless scrolling.</p>
+        <button class="btn btn-primary" id="onboarding-finish">Complete setup</button>
+      </div>
+      <div class="onboarding-pagination" id="onboarding-pagination">1 / 4</div>
+    </section>
+
+    <section class="screen" id="home-screen">
+      <header class="header-row">
+        <div>
+          <p class="caption">Good Evening</p>
+          <h1 id="welcome-name">User</h1>
+        </div>
+        <div class="score-pill" id="focus-score">Focus 0/100</div>
+      </header>
+
+      <article class="card main-card">
+        <div class="progress-wrap">
+          <svg class="progress-ring" width="200" height="200" viewBox="0 0 200 200">
+            <circle class="ring-bg" cx="100" cy="100" r="78"></circle>
+            <circle class="ring-fg" id="ring-fg" cx="100" cy="100" r="78"></circle>
+          </svg>
+          <div class="progress-text">
+            <p class="time" id="used-time">0m</p>
+            <p class="caption" id="goal-text">of 120m goal</p>
+          </div>
+        </div>
+        <p class="status" id="status-line">Loading your progress...</p>
+      </article>
+
+      <div class="button-row">
+        <button class="btn btn-primary" id="start-focus">Start Focus Session</button>
+        <button class="btn btn-secondary" data-tab="insights">View Insights</button>
+      </div>
+
+      <article class="card insight-card">
+        <p class="caption">AI Insight</p>
+        <p id="ai-home-insight">Most scrolling happens after 10:00 PM.</p>
+        <p class="caption" id="streak-text">Focus streak: 0 days</p>
+      </article>
+    </section>
+
+    <section class="screen" id="insights-screen">
+      <h2>Insights</h2>
+      <article class="card">
+        <div class="card-head"><h3>Weekly Overview</h3><span class="caption">Mon–Sun</span></div>
+        <div class="bars" id="weekly-bars"></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><h3>Time Saved (Weeks)</h3><span class="caption" id="accept-rate">Nudge accept 0%</span></div>
+        <svg class="line-chart" viewBox="0 0 300 120">
+          <path id="saved-path" d="M10 90 L290 40"></path>
+          <circle id="saved-dot" cx="290" cy="40" r="4"></circle>
+        </svg>
+      </article>
+      <article class="card">
+        <div class="card-head"><h3>Behavior Analysis</h3><span class="caption" id="behavior-risk">Risk: low</span></div>
+        <p class="caption" id="behavior-summary">Scroll ratio: 0% · Productive ratio: 0%</p>
+        <ul id="behavior-recos" class="bullet-list"></ul>
+      </article>
+    </section>
+
+    <section class="screen focus-screen" id="focus-screen">
+      <div>
+        <p class="caption">Focus Mode</p>
+        <p class="timer" id="focus-timer">15:00</p>
+        <p class="caption">Breathe in. You are reclaiming your time.</p>
+      </div>
+      <button class="btn btn-ghost" id="end-focus">End Session</button>
+    </section>
+
+    <section class="screen" id="settings-screen">
+      <h2>Settings</h2>
+      <p class="section-label">PROFILE</p>
+      <article class="card list-card">
+        <label class="field">Name <input id="profile-name" type="text" /></label>
+        <label class="field">Daily goal (min) <input id="profile-goal" type="number" min="30" step="5" /></label>
+      </article>
+
+      <p class="section-label">MODES</p>
+      <article class="card list-card">
+        <label class="toggle-row"><span>Study Mode</span><input id="study-mode" type="checkbox" /></label>
+        <label class="toggle-row"><span>Work Mode</span><input id="work-mode" type="checkbox" /></label>
+        <label class="toggle-row"><span>Sleep Mode</span><input id="sleep-mode" type="checkbox" /></label>
+      </article>
+
+      <p class="section-label">THEME</p>
+      <article class="card list-card">
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="amoled">AMOLED</option>
+          <option value="calm_blue">Calm Blue</option>
+          <option value="forest_green">Forest Green</option>
+        </select>
+      </article>
+
+      <p class="section-label">INTEGRATIONS</p>
+      <article class="card list-card" id="integration-list"></article>
+
+      <div class="button-row mt16">
+        <button class="btn btn-secondary" id="export-data">Export Data</button>
+        <button class="btn btn-ghost" id="delete-data">Delete Activity</button>
+      </div>
+      <button class="btn btn-primary mt16" id="save-settings">Save Settings</button>
+      <button class="btn btn-secondary mt16" id="go-subscription">Subscription</button>
+      <p class="caption" id="save-msg"></p>
+    </section>
+
+    <section class="screen" id="subscription-screen">
+      <h2>Subscription</h2>
+      <article class="card main-card">
+        <p class="caption">Current Plan</p>
+        <h3 id="plan-name">Free</h3>
+        <p class="caption" id="trial-text">14-day pro trial available</p>
+        <div class="button-row mt16">
+          <button class="btn btn-primary" id="upgrade-pro">Upgrade to Pro</button>
+          <button class="btn btn-secondary" id="downgrade-free">Switch to Free</button>
+        </div>
+      </article>
+      <button class="btn btn-ghost mt16" data-tab="settings">Back to Settings</button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="nav-item" data-tab="home">Home</button>
+    <button class="nav-item" data-tab="insights">Insights</button>
+    <button class="nav-item" data-tab="focus">Focus</button>
+    <button class="nav-item" data-tab="settings">Settings</button>
+  </nav>
+
+  <div class="sheet" id="nudge-sheet">
+    <p class="caption">Smart Nudge</p>
+    <h3>You've been scrolling for 18 minutes.</h3>
+    <p>Take a 10-minute focus reset?</p>
+    <div class="sheet-actions">
+      <button class="btn btn-primary" id="nudge-start">Start Focus</button>
+      <button class="btn btn-secondary" id="nudge-snooze">Snooze 5m</button>
+      <button class="btn btn-ghost" id="nudge-dismiss">Dismiss</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

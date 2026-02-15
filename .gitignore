@@ -1,0 +1,3 @@
+backend/smtg.db
+__pycache__/
+*.pyc

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "name": "SMTG Design Tokens",
+    "version": "1.0.0",
+    "description": "Calm, minimal, premium UI token set"
+  },
+  "color": {
+    "primary": "#3A7AFE",
+    "focus": "#2ECC71",
+    "warning": "#F4A261",
+    "background": {
+      "light": "#F6F8FB",
+      "dark": "#0E1116"
+    },
+    "card": {
+      "light": "#FFFFFF",
+      "dark": "#1A1F26"
+    },
+    "text": {
+      "primaryLight": "#1C1F24",
+      "primaryDark": "#F5F7FA",
+      "secondaryLight": "#6B7280",
+      "secondaryDark": "#9CA3AF"
+    }
+  },
+  "typography": {
+    "fontFamily": ["Inter", "SF Pro", "system-ui", "sans-serif"],
+    "h1": { "size": 28, "weight": 700, "lineHeight": 1.2 },
+    "h2": { "size": 22, "weight": 600, "lineHeight": 1.3 },
+    "h3": { "size": 18, "weight": 500, "lineHeight": 1.35 },
+    "body": { "size": 16, "weight": 400, "lineHeight": 1.5 },
+    "caption": { "size": 13, "weight": 500, "lineHeight": 1.4 },
+    "analyticsNumber": { "size": 36, "weight": 700, "tabular": true }
+  },
+  "spacing": {
+    "grid": 8,
+    "xs": 8,
+    "sm": 16,
+    "md": 24,
+    "lg": 32,
+    "screenMargin": 20,
+    "cardPadding": 16
+  },
+  "radius": {
+    "standard": 16,
+    "mainCard": 24,
+    "pill": 24,
+    "circularStat": 32
+  },
+  "sizing": {
+    "buttonHeight": 52,
+    "bottomNavHeight": 64,
+    "progressThickness": 10,
+    "focusTimerSize": 56
+  },
+  "motion": {
+    "fast": 200,
+    "normal": 250,
+    "slow": 300,
+    "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "spring": "cubic-bezier(0.2, 0.8, 0.2, 1)"
+  },
+  "shadow": {
+    "card": "0 8px 20px rgba(0, 0, 0, 0.05)",
+    "noneDarkMode": true
+  }
+}

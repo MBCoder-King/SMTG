@@ -1,0 +1,10 @@
+{
+  "name": "Social Media Time Guard",
+  "short_name": "SMTG",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f8fb",
+  "theme_color": "#3a7afe",
+  "description": "AI-driven app to reduce endless social scrolling and recover focus time.",
+  "icons": []
+}
