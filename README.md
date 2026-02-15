@@ -1,3 +1,4 @@
+python3 backend/app.py
 # Social Media Time Guard (SMTG)
 
 A working, deployable web MVP for reducing endless social scrolling with calm UX, analytics, and privacy-first defaults.
